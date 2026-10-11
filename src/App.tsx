@@ -209,16 +209,6 @@ const projects: Project[] = [
     style: "rezzz",
     mark: "R",
   },
-  {
-    title: "Cuestionarios",
-    category: "Aplicación",
-    description:
-      "Un proyecto educativo para practicar y responder cuestionarios.",
-    year: "2024",
-    tags: ["Web", "Educación", "Práctica"],
-    style: "quiz",
-    mark: "?",
-  },
 ];
 
 const filters = ["Todos", "Sitio web", "Aplicación", "Juego"];
@@ -380,7 +370,10 @@ function App() {
               <button
                 className={`filter-button${activeFilter === filter ? " is-active" : ""}`}
                 key={filter}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => {
+                  setActiveFilter(filter);
+                  if (filter === "Todos") setQuery("");
+                }}
                 type="button"
               >
                 {filter}
@@ -400,6 +393,24 @@ function App() {
               value={query}
             />
           </label>
+        </div>
+
+        <div className="results-summary" aria-live="polite">
+          <span>
+            Mostrando <strong>{visibleProjects.length}</strong> de{" "}
+            <strong>{projects.length}</strong> proyectos
+          </span>
+          {(activeFilter !== "Todos" || query) && (
+            <button
+              onClick={() => {
+                setActiveFilter("Todos");
+                setQuery("");
+              }}
+              type="button"
+            >
+              Mostrar todos <ArrowIcon />
+            </button>
+          )}
         </div>
 
         {visibleProjects.length > 0 ? (
