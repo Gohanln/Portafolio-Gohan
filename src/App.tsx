@@ -26,7 +26,7 @@ const projects: Project[] = [
     tags: ["React", "Finanzas", "Dashboard"],
     style: "finance",
     mark: "$",
-    demoPath: "demos/finanzas/",
+    demoPath: "demos/finanzas/index.html",
     sourceUrl: "https://github.com/Gohanln/gestion-finanzas",
     featured: true,
   },
@@ -39,7 +39,7 @@ const projects: Project[] = [
     tags: ["React", "Sistema", "Negocio"],
     style: "bakery",
     mark: "pan",
-    demoPath: "demos/panaderia/",
+    demoPath: "demos/panaderia/index.html",
     featured: true,
   },
   {
@@ -51,7 +51,7 @@ const projects: Project[] = [
     tags: ["JavaScript", "Noticias", "Editorial"],
     style: "news",
     mark: "TN",
-    demoPath: "demos/technews/",
+    demoPath: "demos/technews/index.html",
     sourceUrl: "https://github.com/Gohanln/tech_news",
   },
   {
@@ -63,7 +63,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     style: "tasks",
     mark: "✓",
-    demoPath: "demos/todo-app/",
+    demoPath: "demos/todo-app/index.html",
   },
   {
     title: "Autos",
@@ -74,7 +74,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Galería"],
     style: "cars",
     mark: "04",
-    demoPath: "demos/autos/",
+    demoPath: "demos/autos/index.html",
   },
   {
     title: "Box",
@@ -85,7 +85,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Deportes"],
     style: "boxing",
     mark: "B",
-    demoPath: "demos/box/",
+    demoPath: "demos/box/index.html",
   },
   {
     title: "Flappy Bird",
@@ -96,7 +96,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Phaser", "Juego"],
     style: "bird",
     mark: "✳",
-    demoPath: "demos/flappy-bird/",
+    demoPath: "demos/flappy-bird/index.html",
     featured: true,
   },
   {
@@ -120,7 +120,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Música"],
     style: "music",
     mark: "♫",
-    demoPath: "demos/musica/",
+    demoPath: "demos/musica/index.html",
   },
   {
     title: "Novia so no",
@@ -143,7 +143,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Catálogo"],
     style: "perfume",
     mark: "P",
-    demoPath: "demos/perfumes/",
+    demoPath: "demos/perfumes/index.html",
   },
   {
     title: "SICOFÉ Contabilidad",
@@ -154,7 +154,7 @@ const projects: Project[] = [
     tags: ["Web", "Contabilidad", "Sistema"],
     style: "sicofe",
     mark: "SC",
-    demoPath: "demos/sicofe/",
+    demoPath: "demos/sicofe/index.html",
   },
   {
     title: "Tercer mes",
@@ -177,7 +177,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Videojuegos"],
     style: "zenless",
     mark: "ZZZ",
-    demoPath: "demos/zenless-zone-zero/",
+    demoPath: "demos/zenless-zone-zero/index.html",
   },
   {
     title: "Real Estate",
@@ -188,7 +188,7 @@ const projects: Project[] = [
     tags: ["React", "Inmobiliaria", "UI"],
     style: "estate",
     mark: "RE",
-    demoPath: "demos/real-estate/",
+    demoPath: "demos/real-estate/index.html",
   },
   {
     title: "Mi primera página web",
@@ -199,7 +199,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Aprendizaje"],
     style: "first-page",
     mark: "01",
-    demoPath: "demos/first-page/",
+    demoPath: "demos/first-page/index.html",
     previewImage: `${import.meta.env.BASE_URL}previews/first-page.png`,
   },
   {
@@ -211,7 +211,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Personal"],
     style: "flowers",
     mark: "✿",
-    demoPath: "demos/flowers/",
+    demoPath: "demos/flowers/index.html",
     previewImage: `${import.meta.env.BASE_URL}previews/flowers.png`,
   },
   {
@@ -223,7 +223,7 @@ const projects: Project[] = [
     tags: ["Web", "Proyecto personal"],
     style: "rezzz",
     mark: "R",
-    demoPath: "demos/rezzz/",
+    demoPath: "demos/rezzz/index.html",
   },
 ];
 
