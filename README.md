@@ -36,3 +36,12 @@ las demos remotas usan `liveUrl`.
 
 Los archivos estáticos de cada demo local se guardan dentro de su propia carpeta
 para conservar sus recursos y navegación multipágina.
+
+## Publicar en GitHub Pages
+
+En los ajustes del repositorio, selecciona **Settings → Pages → Build and
+deployment → Source: GitHub Actions**. Cada push a `main` compila el portafolio
+y publica el contenido de `dist`, incluidas las demos. El workflow también se
+puede ejecutar manualmente desde la pestaña **Actions**.
+
+La URL del sitio es <https://gohanln.github.io/Portafolio-Gohan/>.
