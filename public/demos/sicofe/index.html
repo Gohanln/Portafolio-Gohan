@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vista de demostración de SICOFE Contabilidad."
+    />
+    <title>SICOFE — Contabilidad profesional</title>
+    <style>
+      :root {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: #202438;
+        background: #f7f8fc;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        --purple: #7058de;
+        --blue: #3787e7;
+        --muted: #697084;
+        --card: #fff;
+        --line: #e8e9f0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 87% 13%, #8c77ed16, transparent 28rem),
+          radial-gradient(ellipse at 4% 40%, #388ae40c, transparent 24rem),
+          #f7f8fc;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1160px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        z-index: 2;
+        top: 0;
+        border-bottom: 1px solid #e8e9f0c7;
+        background: #f7f8fce8;
+        backdrop-filter: blur(16px);
+      }
+
+      .nav {
+        display: flex;
+        height: 76px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 14px;
+        font-weight: 750;
+        letter-spacing: 0.06em;
+      }
+
+      .brand-icon {
+        display: grid;
+        width: 39px;
+        height: 39px;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(140deg, var(--purple), var(--blue));
+        color: white;
+      }
+
+      .brand-icon svg {
+        width: 23px;
+        height: 23px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .nav-links a:hover {
+        color: var(--purple);
+      }
+
+      .theme-toggle {
+        display: grid;
+        width: 37px;
+        height: 37px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--card);
+        color: var(--purple);
+        cursor: pointer;
+      }
+
+      .theme-toggle svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .hero {
+        display: grid;
+        min-height: 500px;
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        gap: 60px;
+        padding: 62px 0 80px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border: 1px solid #7058de22;
+        border-radius: 30px;
+        background: #7058de09;
+        color: var(--purple);
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+      }
+
+      .eyebrow-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #39b989;
+        box-shadow: 0 0 0 4px #39b9891a;
+      }
+
+      h1 {
+        max-width: 690px;
+        margin: 24px 0 18px;
+        font-size: clamp(45px, 5.6vw, 70px);
+        letter-spacing: -0.065em;
+        line-height: 1.04;
+      }
+
+      h1 span {
+        background: linear-gradient(100deg, var(--purple), var(--blue));
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-copy > p {
+        max-width: 560px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 47px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 17px;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        font-size: 13px;
+        font-weight: 650;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        background: linear-gradient(110deg, var(--purple), var(--blue));
+        box-shadow: 0 9px 20px #7058de31;
+        color: white;
+      }
+
+      .button-secondary {
+        border-color: var(--line);
+        background: var(--card);
+      }
+
+      .button svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .dashboard {
+        position: relative;
+        min-height: 345px;
+        padding: 24px;
+        border: 1px solid #ffffff;
+        border-radius: 23px;
+        background: linear-gradient(150deg, #7058de, #448ce4);
+        box-shadow: 0 25px 70px #483ba534;
+        color: white;
+        transform: rotate(2deg);
+      }
+
+      .dashboard::before {
+        position: absolute;
+        top: -17px;
+        right: 32px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ffffff36;
+        border-radius: 50%;
+        content: "";
+      }
+
+      .dashboard-head,
+      .balance-row,
+      .dashboard-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .dashboard-head {
+        font-size: 11px;
+      }
+
+      .dashboard-head span:first-child {
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .balance-label {
+        margin-top: 31px;
+        color: #ffffffbb;
+        font-size: 12px;
+      }
+
+      .balance-row strong {
+        font-size: 31px;
+        letter-spacing: -0.05em;
+      }
+
+      .balance-row span {
+        padding: 6px 9px;
+        border-radius: 20px;
+        background: #ffffff25;
+        font-size: 11px;
+      }
+
+      .chart {
+        display: flex;
+        height: 125px;
+        align-items: end;
+        justify-content: space-between;
+        gap: 9px;
+        margin-top: 29px;
+        padding: 10px 5px 0;
+        border-bottom: 1px solid #ffffff62;
+      }
+
+      .chart i {
+        width: 10%;
+        border-radius: 7px 7px 0 0;
+        background: linear-gradient(0deg, #ffffff7d, #ffffffd9);
+        box-shadow: 0 0 17px #ffffff19;
+      }
+
+      .dashboard-foot {
+        margin-top: 16px;
+        color: #ffffffc4;
+        font-size: 10px;
+      }
+
+      .section {
+        padding: 70px 0 90px;
+      }
+
+      .section-heading {
+        max-width: 640px;
+        margin: 0 auto 37px;
+        text-align: center;
+      }
+
+      .section-heading h2 {
+        margin: 12px 0;
+        font-size: clamp(32px, 4vw, 45px);
+        letter-spacing: -0.05em;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 17px;
+      }
+
+      .service-card {
+        min-height: 250px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: var(--card);
+        box-shadow: 0 10px 30px #1a25410a;
+      }
+
+      .service-icon {
+        display: grid;
+        width: 47px;
+        height: 47px;
+        place-items: center;
+        border-radius: 13px;
+        background: linear-gradient(140deg, #7058de17, #3787e717);
+        color: var(--purple);
+      }
+
+      .service-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .service-card h3 {
+        margin: 22px 0 9px;
+        font-size: 17px;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 30px;
+        padding: 34px;
+        border: 1px solid #7058de20;
+        border-radius: 20px;
+        background:
+          radial-gradient(ellipse at 91% 20%, #3787e412, transparent 20rem),
+          linear-gradient(140deg, #7058de0c, #3787e408);
+      }
+
+      .contact-panel h2 {
+        margin: 0 0 9px;
+        font-size: clamp(25px, 3vw, 35px);
+        letter-spacing: -0.05em;
+      }
+
+      .contact-panel p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 27px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .demo-label {
+        color: var(--purple);
+        font-size: 10px;
+        font-weight: 650;
+        letter-spacing: 0.12em;
+      }
+
+      body.dark {
+        color: #eff0f8;
+        background:
+          radial-gradient(ellipse at 87% 13%, #8c77ed1c, transparent 28rem),
+          #141625;
+        --muted: #a4a8bb;
+        --card: #1d2032;
+        --line: #303348;
+      }
+
+      body.dark header {
+        border-color: #303348;
+        background: #141625e8;
+      }
+
+      body.dark .eyebrow {
+        border-color: #9a89ff40;
+        background: #9a89ff12;
+      }
+
+      body.dark .button-secondary {
+        background: #1d2032;
+      }
+
+      @media (max-width: 760px) {
+        .shell {
+          width: min(100% - 34px, 560px);
+        }
+
+        .nav {
+          height: 66px;
+        }
+
+        .nav-links {
+          gap: 14px;
+          font-size: 11px;
+        }
+
+        .nav-links a:first-child {
+          display: none;
+        }
+
+        .theme-toggle {
+          width: 33px;
+          height: 33px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          padding: 58px 0 46px;
+        }
+
+        h1 {
+          font-size: clamp(44px, 11vw, 60px);
+        }
+
+        .hero-copy > p {
+          font-size: 15px;
+        }
+
+        .dashboard {
+          min-height: 300px;
+          padding: 20px;
+        }
+
+        .section {
+          padding: 52px 0;
+        }
+
+        .service-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .service-card {
+          min-height: 0;
+        }
+
+        .contact-panel {
+          grid-template-columns: 1fr;
+          padding: 25px;
+        }
+
+        .footer-row {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell nav" aria-label="Navegación principal">
+        <a class="brand" href="#inicio">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M7 3.75h10A3.25 3.25 0 0 1 20.25 7v13.25H3.75V7A3.25 3.25 0 0 1 7 3.75Z"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M8 8h8M8 12h2m4 0h2m-8 4h2m4 0h2"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="1.6"
+              />
+            </svg>
+          </span>
+          <span>SICOFE</span>
+        </a>
+        <div class="nav-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#contacto">Contacto</a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M20.3 15.2A8.5 8.5 0 0 1 8.8 3.7 8.6 8.6 0 1 0 20.3 15.2Z"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell hero" id="inicio">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> CONTABILIDAD PARA EMPRESAS</span>
+          <h1><span>Soluciones financieras</span> para la empresa moderna</h1>
+          <p>
+            Simplificamos tu gestión contable y fiscal para que te enfoques en
+            hacer crecer tu negocio con total cumplimiento normativo.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#servicios">
+              Explorar servicios
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.6" />
+              </svg>
+            </a>
+            <a class="button button-secondary" href="#contacto">Conocer más</a>
+          </div>
+        </div>
+
+        <div class="dashboard" role="img" aria-label="Ilustración de un panel financiero">
+          <div class="dashboard-head">
+            <span>RESUMEN FINANCIERO</span>
+            <span>•••</span>
+          </div>
+          <div class="balance-label">Balance general</div>
+          <div class="balance-row">
+            <strong>$ 248,560</strong>
+            <span>↗ 12.8%</span>
+          </div>
+          <div class="chart" aria-hidden="true">
+            <i style="height: 39%"></i>
+            <i style="height: 52%"></i>
+            <i style="height: 45%"></i>
+            <i style="height: 69%"></i>
+            <i style="height: 57%"></i>
+            <i style="height: 78%"></i>
+            <i style="height: 66%"></i>
+            <i style="height: 94%"></i>
+          </div>
+          <div class="dashboard-foot">
+            <span>ENERO — JUNIO</span>
+            <span>Estado actualizado</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="servicios">
+        <div class="shell">
+          <div class="section-heading">
+            <span class="demo-label">SOLUCIONES INTEGRALES</span>
+            <h2>Nuestros servicios</h2>
+            <p>Soluciones para el crecimiento y el éxito de tu empresa.</p>
+          </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M8 3.75h8A2.25 2.25 0 0 1 18.25 6v12A2.25 2.25 0 0 1 16 20.25H8A2.25 2.25 0 0 1 5.75 18V6A2.25 2.25 0 0 1 8 3.75Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M9 8h6m-6 4h.01M12 12h.01M15 12h.01M9 15h.01M12 15h.01M15 15h.01"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="1.7"
+                  />
+                </svg>
+              </span>
+              <h3>Contabilidad</h3>
+              <p>
+                Servicios contables completos con estados financieros y reportes
+                personalizados para el crecimiento de tu negocio.
+              </p>
+            </article>
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 3.75h7l5 5V19A1.25 1.25 0 0 1 17.75 20.25h-11A1.25 1.25 0 0 1 5.5 19V5A1.25 1.25 0 0 1 6.75 3.75Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M13.75 4v5h4.5m-8.5 4h4m-4 3h4"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </span>
+              <h3>Impuestos</h3>
+              <p>
+                Planificación fiscal estratégica que facilita el cumplimiento
+                de tus obligaciones tributarias.
+              </p>
+            </article>
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="m4 16 5-5 3.5 3.5L20 7m-6 0h6v6"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.6"
+                  />
+                </svg>
+              </span>
+              <h3>Asesoría financiera</h3>
+              <p>
+                Orientación financiera personalizada para optimizar recursos y
+                apoyar el crecimiento sostenible.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section" id="contacto">
+        <div class="contact-panel">
+          <div>
+            <span class="demo-label">CONSULTA GRATUITA DISPONIBLE</span>
+            <h2>¿Listo para optimizar tu contabilidad?</h2>
+            <p>
+              Descubre cómo los servicios contables pueden ayudarte a crecer con
+              tranquilidad fiscal.
+            </p>
+          </div>
+          <a class="button button-primary" href="#inicio">Volver al inicio</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-row">
+        <span>SICOFE · Contabilidad profesional</span>
+        <span class="demo-label">VISTA DE DEMOSTRACIÓN</span>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelector("#theme-toggle").addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+      });
+    </script>
+  </body>
+</html>

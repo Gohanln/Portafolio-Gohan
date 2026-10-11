@@ -11,6 +11,7 @@ type Project = {
   mark: string;
   featured?: boolean;
   previewImage?: string;
+  demoPath?: string;
   liveUrl?: string;
   sourceUrl?: string;
 };
@@ -25,6 +26,7 @@ const projects: Project[] = [
     tags: ["React", "Finanzas", "Dashboard"],
     style: "finance",
     mark: "$",
+    demoPath: "demos/finanzas/",
     sourceUrl: "https://github.com/Gohanln/gestion-finanzas",
     featured: true,
   },
@@ -37,6 +39,7 @@ const projects: Project[] = [
     tags: ["React", "Sistema", "Negocio"],
     style: "bakery",
     mark: "pan",
+    demoPath: "demos/panaderia/",
     featured: true,
   },
   {
@@ -48,6 +51,7 @@ const projects: Project[] = [
     tags: ["JavaScript", "Noticias", "Editorial"],
     style: "news",
     mark: "TN",
+    demoPath: "demos/technews/",
     sourceUrl: "https://github.com/Gohanln/tech_news",
   },
   {
@@ -59,6 +63,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     style: "tasks",
     mark: "✓",
+    demoPath: "demos/todo-app/",
   },
   {
     title: "Autos",
@@ -69,6 +74,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Galería"],
     style: "cars",
     mark: "04",
+    demoPath: "demos/autos/",
   },
   {
     title: "Box",
@@ -79,6 +85,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Deportes"],
     style: "boxing",
     mark: "B",
+    demoPath: "demos/box/",
   },
   {
     title: "Flappy Bird",
@@ -89,6 +96,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Phaser", "Juego"],
     style: "bird",
     mark: "✳",
+    demoPath: "demos/flappy-bird/",
     featured: true,
   },
   {
@@ -112,6 +120,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Música"],
     style: "music",
     mark: "♫",
+    demoPath: "demos/musica/",
   },
   {
     title: "Novia so no",
@@ -134,6 +143,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Catálogo"],
     style: "perfume",
     mark: "P",
+    demoPath: "demos/perfumes/",
   },
   {
     title: "SICOFÉ Contabilidad",
@@ -144,6 +154,7 @@ const projects: Project[] = [
     tags: ["Web", "Contabilidad", "Sistema"],
     style: "sicofe",
     mark: "SC",
+    demoPath: "demos/sicofe/",
   },
   {
     title: "Tercer mes",
@@ -166,6 +177,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Videojuegos"],
     style: "zenless",
     mark: "ZZZ",
+    demoPath: "demos/zenless-zone-zero/",
   },
   {
     title: "Real Estate",
@@ -176,6 +188,7 @@ const projects: Project[] = [
     tags: ["React", "Inmobiliaria", "UI"],
     style: "estate",
     mark: "RE",
+    demoPath: "demos/real-estate/",
   },
   {
     title: "Mi primera página web",
@@ -186,7 +199,8 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Aprendizaje"],
     style: "first-page",
     mark: "01",
-    previewImage: "/previews/first-page.png",
+    demoPath: "demos/first-page/",
+    previewImage: `${import.meta.env.BASE_URL}previews/first-page.png`,
   },
   {
     title: "Flores amarillas",
@@ -197,7 +211,8 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Personal"],
     style: "flowers",
     mark: "✿",
-    previewImage: "/previews/flowers.png",
+    demoPath: "demos/flowers/",
+    previewImage: `${import.meta.env.BASE_URL}previews/flowers.png`,
   },
   {
     title: "Rezzz",
@@ -208,6 +223,7 @@ const projects: Project[] = [
     tags: ["Web", "Proyecto personal"],
     style: "rezzz",
     mark: "R",
+    demoPath: "demos/rezzz/",
   },
 ];
 
@@ -266,6 +282,13 @@ function App() {
       return matchesFilter && searchableText.includes(normalizedQuery);
     });
   }, [activeFilter, query]);
+
+  const selectedProjectDemoUrl = selectedProject
+    ? selectedProject.liveUrl ??
+      (selectedProject.demoPath
+        ? `${import.meta.env.BASE_URL}${selectedProject.demoPath}`
+        : undefined)
+    : undefined;
 
   useEffect(() => {
     if (!selectedProject) return;
@@ -453,9 +476,10 @@ function App() {
                   <div>
                     <span className="project-category">
                       {project.category}
-                      {project.liveUrl && (
-                        <span className="live-indicator"> · DEMO EN LÍNEA</span>
-                      )}
+                      <span className="live-indicator">
+                        {" · "}
+                        {project.liveUrl ? "DEMO EN LÍNEA" : "DEMO DISPONIBLE"}
+                      </span>
                     </span>
                     <h3>{project.title}</h3>
                   </div>
@@ -589,13 +613,17 @@ function App() {
                 <span key={tag}>{tag}</span>
               ))}
             </div>
-            {selectedProject.liveUrl || selectedProject.sourceUrl ? (
+            {selectedProjectDemoUrl || selectedProject.sourceUrl ? (
               <div className="project-actions">
-                {selectedProject.liveUrl && (
+                {selectedProjectDemoUrl && (
                   <a
                     className="project-action project-action-primary"
-                    href={selectedProject.liveUrl}
-                    rel="noreferrer"
+                    href={selectedProjectDemoUrl}
+                    rel={
+                      selectedProjectDemoUrl.startsWith("https://")
+                        ? "noreferrer"
+                        : undefined
+                    }
                     target="_blank"
                   >
                     Abrir demo <ArrowIcon diagonal />

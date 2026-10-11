@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  color: #222;
+}
+
+header {
+  background: #222;
+  padding: 1.2rem 0;
+  box-shadow: 0 2px 8px rgb(0, 0, 0);
+}
+
+.navegacion {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navegacion a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navegacion a.activo {
+  background: #b48a78;
+  color: #fff;
+}
+
+.principal {
+  text-align: center;
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.principal h1 {
+  font-size: 2.5rem;
+  color: #b48a78;
+  margin-bottom: 0.5rem;
+}
+
+.principal p {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.descripcion-inicio {
+  max-width: 600px;
+  margin: 1.5rem auto 0 auto;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  background: #fff8f3;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 8px rgb(180, 138, 120);
+}
+
+.destacados {
+  margin: 2.5rem auto 0 auto;
+  width: 100%;
+}
+
+.destacados h2 {
+  text-align: center;
+  color: #b48a78;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rejilla-perfumes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.tarjeta-perfume {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem 1rem 1.2rem 1rem;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.tarjeta-perfume img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-perfume h3 {
+  color: #b48a78;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta-perfume p {
+  color: #444;
+  font-size: 1.05rem;
+}

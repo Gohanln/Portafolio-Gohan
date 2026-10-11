@@ -27,11 +27,12 @@ npm run lint
 Los proyectos, sus descripciones y categorías están definidos en `src/App.tsx`.
 Los estilos de la página se encuentran en `src/App.css` y `src/index.css`.
 Las capturas locales usadas como portadas se guardan en `public/previews`.
+Las demos locales se publican desde `public/demos`; cada tarjeta las abre en una
+pestaña nueva. Love Her, Novia so no y Tercer mes abren sus demos públicas.
 
 El nombre, la presentación y los enlaces de contacto actuales se pueden editar
-en `src/App.tsx`. Añade las URLs de demostración a cada proyecto cuando estén
-publicadas para habilitar la navegación directa desde la galería.
+en `src/App.tsx`. La ruta local de cada proyecto se configura con `demoPath`;
+las demos remotas usan `liveUrl`.
 
-Las demos y repositorios públicos verificados también se configuran por proyecto
-con `liveUrl` y `sourceUrl`; si no se encuentra un enlace público, la ficha lo
-indica sin inventar un destino.
+Los archivos estáticos de cada demo local se guardan dentro de su propia carpeta
+para conservar sus recursos y navegación multipágina.

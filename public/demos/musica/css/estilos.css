@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #181a1b;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+.navegacion {
+  background: #222;
+  padding: 10px 0;
+}
+.navegacion ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.navegacion li {
+  margin: 0 10px;
+}
+.navegacion a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.navegacion a:hover {
+  background: #444;
+  color: #fff;
+}
+.encabezado {
+  text-align: center;
+  background: #333;
+  color: #fff;
+  padding: 30px 10px 10px 10px;
+}
+.principal {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+.lista-bandas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.banda {
+  background: #232526;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 18px;
+  width: 260px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imagen-banda {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #222;
+}
+.boton {
+  display: inline-block;
+  margin-top: 10px;
+  background: #222;
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+.boton:hover {
+  background: #444;
+}
+.banda h2 {
+  color: #f0f0f0;
+}
+.banda p {
+  color: #cccccc;
+}
+.descripcion-musica h2 {
+  color: #f0f0f0;
+}
+.descripcion-musica p {
+  color: #cccccc;
+}
